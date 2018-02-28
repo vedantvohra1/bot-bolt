@@ -1,0 +1,1 @@
+document.body.innerHTML += "<i class='fa fa-plus my-float'></i>";
