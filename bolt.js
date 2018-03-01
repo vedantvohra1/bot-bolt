@@ -103,11 +103,11 @@ var trigger_speech_recognition = function()
 
     recognition.onend = function() {
 
-        if (flags.manual_intervention)
-
+        console.log("onend")
+        if (flags.manual_intervention) {
+            message()
             return;
-
-        stop_speech_recognition();
+        }
 
         trigger_speech_recognition();
 
@@ -146,7 +146,6 @@ var trigger_speech_recognition = function()
 var stop_speech_recognition = function(manual = false) {
 
     recognition.stop();
-    message()
 
 };
 
