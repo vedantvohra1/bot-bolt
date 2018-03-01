@@ -9,8 +9,10 @@ document.body.innerHTML += '<div class="w3-container"><button onclick="botpop()"
 function botpop() {
     console.log("bot is init");
     $('body').append('<div id="myModal" class="modal"><div class="modal-content"><span class="close">&times;</span><p>Some text in the Modal..</p></div> </div>');
-
-
+    $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
+    $('head').append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">');
+    $('head').append('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>');
+    $('head').append('<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>');
 }
 
 console.log('working');
