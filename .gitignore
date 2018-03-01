@@ -2,3 +2,6 @@
 .idea/
 .sonarlint/
 .vscode/
+
+# html
+*.html
