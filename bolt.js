@@ -14,16 +14,26 @@ document.body.innerHTML += '<div class="w3-container"><button onclick="botpop()"
 
 function message() {
     var text = $('#message').val();
-    $('#messages').append('<div class="container darker"><img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;"><p>Hey! I\'m fine. Thanks for asking!</p><span class="time-left">11:01</span></div>');
-    console.log("message sent");
+    document.getElementById('message').value = "";
+    var d = new Date(),
+        h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
+        m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+    var time = h + ':' + m;
+    $('#messages').append('<div class="container darker"><img src="bot-bolt/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
+    console.log(text);
 }
 
 
 function botpop() {
     console.log("bot is init");
+    var d = new Date(),
+        h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
+        m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+    var time = h + ':' + m;
+    console.log(time);
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
     $("#messages").empty();
-    $('#messages').append('<div class="container"><img src="bot-bolt/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>Hello. I still wonder why you didn\'t get fired</p><span class="time-right">11:00</span></div>');
+    $('#messages').append('<div class="container"><img src="bot-bolt/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>Hello. I still wonder why you didn\'t get fired</p><span class="time-right">' + time + '</span></div>');
     $("#reqblock").empty();
     $('#reqblock').append('<input type="text" id="message">');
     $('#reqblock').append('<button id="callbot" type="button" class="btn btn-default" >Record</button>');
