@@ -14,7 +14,7 @@ document.body.innerHTML += '<div class="w3-container"><button onclick="botpop()"
 function botpop() {
     console.log("bot is init");
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"><h4 class="modal-title">Hai, I am jarvis</h4></div></div><div class="modal-body"><p>I do nothing</p></div><div class="modal-footer"><button type="button" class="btn btn-default" >Record</button></div></div></div></div></div>');
-    $('#messages').append('<div class="container"><img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;"><p>Hello. I still wonder why you didn\'t get fired</p><span class="time-right">11:00</span></div>');
+    $('#messages').append('<div class="container"><img src="jarvis.png" alt="Avatar" style="width:100%;"><p>Hello. I still wonder why you didn\'t get fired</p><span class="time-right">11:00</span></div>');
 
 
 }
