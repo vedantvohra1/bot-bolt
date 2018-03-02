@@ -21,6 +21,7 @@ function getBaseURL() {
 }
 
 function message() {
+    $('.modal-body').empty()
     var text = $('#message').val();
     document.getElementById('message').value = "";
     var d = new Date(),
@@ -30,7 +31,7 @@ function message() {
     console.log(text);
     if (text != "") {
         $('#messages').append('<div class="container darker"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
-
+        $('.modal-body').html("Please wait...")
         $.ajax({
             type: "GET",
             url: "http://localhost:3000/query?q=" + encodeURIComponent(text),
@@ -42,12 +43,21 @@ function message() {
                     $('.modal-body').empty()
                     $('.modal-body').append('<iframe frameBorder="0" src = "' + url + '" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
                 } else {
+                    $('.modal-body').empty()
                     botsay("Hmm... I'm sorry, could you say that again?")
                     trigger_speech_recognition()
                 }
+
+                scrollToBottom()
             }
         });
     }
+}
+
+function scrollToBottom() {
+    $('html, body').animate({
+        scrollTop: $(document).height()
+    });
 }
 
 
@@ -56,8 +66,9 @@ function botpop() {
     console.log("bot is init");
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
     $("#messages").empty();
-    botsay("Hello. I still wonder why you didn\'t get fired")
+    botsay("Hey! How can I help?")
     $("#reqblock").empty();
+    $(".modal-body").empty()
     $('#reqblock').append('<input type="text" id="message">');
     $('#reqblock').append('<button id="callbot" type="button" class="btn btn-default" >Record</button>');
     $("#callbot").click(function() {
@@ -67,8 +78,6 @@ function botpop() {
             stop_speech_recognition()
         }
     });
-
-    $('#messages').append('<div class="container"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
 var voiceInit = () => {
@@ -96,7 +105,7 @@ function botsay(message) {
     var time = h + ':' + m;
     console.log(time);
 
-    $('#messages').append('<div class="container"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
+    $('#messages').append('<div class="container lighter"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
 var voiceInit = () => {
