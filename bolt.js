@@ -30,7 +30,7 @@ function message() {
     var time = h + ':' + m;
     console.log(text);
     if (text != "") {
-        $('#messages').append('<div class="container darker"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
+        $('#messages').append('<div class="container darker"><img src="https://rawgit.com/vedantvohra1/bot-bolt/master/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
         $('.modal-body').html("Please wait...")
         $.ajax({
             type: "GET",
@@ -66,11 +66,7 @@ function botpop() {
     console.log("bot is init");
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
     $("#messages").empty();
-<<<<<<< HEAD
     botsay("Hey! How can I help?")
-=======
-    botsay("Hello, I am Darwin<br/>How can I help you today?")
->>>>>>> 95503a48dfc649767c3c746ec50e2279be1c9f87
     $("#reqblock").empty();
     $(".modal-body").empty()
     $('#reqblock').append('<input type="text" id="message">');
@@ -109,7 +105,7 @@ function botsay(message) {
     var time = h + ':' + m;
     console.log(time);
 
-    $('#messages').append('<div class="container lighter"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
+    $('#messages').append('<div class="container lighter"><img src="https://rawgit.com/vedantvohra1/bot-bolt/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
 var voiceInit = () => {
