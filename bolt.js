@@ -39,7 +39,8 @@ function message() {
 
                 if (response.url) {
                     var url = base_url + response.url
-                    $('#messages').append('<iframe src = "' + url + '" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+                    $(".modal-body").empty();
+                    $('.modal-body').append('<iframe src = "' + url + '" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
                 } else {
                     botsay("Hmm... I'm sorry, could you say that again?")
                     trigger_speech_recognition()
