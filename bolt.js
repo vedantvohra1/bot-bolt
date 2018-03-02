@@ -66,7 +66,11 @@ function botpop() {
     console.log("bot is init");
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
     $("#messages").empty();
+<<<<<<< HEAD
     botsay("Hey! How can I help?")
+=======
+    botsay("Hello, I am Darwin<br/>How can I help you today?")
+>>>>>>> 95503a48dfc649767c3c746ec50e2279be1c9f87
     $("#reqblock").empty();
     $(".modal-body").empty()
     $('#reqblock').append('<input type="text" id="message">');
