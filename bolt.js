@@ -22,12 +22,16 @@ function getBaseURL() {
 
 var cdn = "https://cdn.rawgit.com/vedantvohra1/bot-bolt/master/init/"
 
-var init = localStorage.getItem("init")
-console.log(init)
-if (init) {
-    $('head').append('<script src="' + cdn + init + '.js"></script>')
-    var entities = JSON.parse(localStorage.getItem("entities"))
-    init(entities)
+var queryString = window.location.search;
+console.log(queryString)
+if (queryString != "") {
+    var init = localStorage.getItem("init")
+    console.log(init)
+    if (init) {
+        $('head').append('<script src="' + cdn + init + '.js"></script>')
+        var entities = JSON.parse(localStorage.getItem("entities"))
+        init(entities)
+    }
 }
 
 
@@ -55,7 +59,7 @@ function message() {
                     localStorage.setItem("init", response.init)
                     localStorage.setItem("entities", JSON.stringify(response.entities))
                     $('.modal-body').empty()
-                    $('.modal-body').append('<iframe frameBorder="0" src = "' + url + '" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+                    $('.modal-body').append('<iframe frameBorder="0" src = "' + url + '?q=apply_leave" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
                 } else {
                     $('.modal-body').empty()
                     botsay("Hmm... I'm sorry, could you say that again?")
