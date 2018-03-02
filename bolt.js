@@ -24,7 +24,6 @@ function message() {
     var time = h + ':' + m;
     $('#messages').append('<div class="container darker"><img src="bot-bolt/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
     console.log(text);
-<<<<<<< HEAD
     if (text != "") {
         $('#messages').append('<div class="container darker"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
 
@@ -45,10 +44,6 @@ function message() {
             }
         });
     }
-=======
-    $(".modal-body").empty();
-    $('.modal-body').append('<iframe  src = "https://dbox.darwinbox.in/leaves" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
->>>>>>> d282afc86ffa3230bdf0c5582f02c9269fbd8428
 }
 
 
@@ -67,7 +62,6 @@ function botpop() {
     $('#reqblock').append('<button id="callbot" type="button" class="btn btn-default" >Record</button>');
     $("#callbot").click(function() { message(); });
 
-<<<<<<< HEAD
     $('#messages').append('<div class="container"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
@@ -87,8 +81,6 @@ var voiceInit = () => {
         console.log("Your browser does not support speech recognition. Please use Chrome.", e);
 
     }
-=======
->>>>>>> d282afc86ffa3230bdf0c5582f02c9269fbd8428
 }
 
 
