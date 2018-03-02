@@ -17,8 +17,10 @@ var flags = {}
 var base_url = getBaseURL()
 
 function getBaseURL() {
-    return 'http://dbox.darwinbox.in'
+    return 'http://tina.qa.darwinbox.io'
 }
+
+$('body').on(load)
 
 function message() {
     $('.modal-body').empty()
