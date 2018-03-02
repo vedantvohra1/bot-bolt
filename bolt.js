@@ -20,9 +20,10 @@ function getBaseURL() {
     return 'http://tina.qa.darwinbox.io'
 }
 
-var cdn = "https://cdn.rawgit.com/vedantvohra1/bot-bolt/master/inits/"
+var cdn = "https://cdn.rawgit.com/vedantvohra1/bot-bolt/master/init/"
 
 var init = localStorage.getItem("init")
+console.log(init)
 if (init) {
     $('head').append('<script src="' + cdn + init + '.js"></script>')
     var entities = JSON.parse(localStorage.getItem("entities"))
@@ -76,6 +77,7 @@ function scrollToBottom() {
 
 function botpop() {
     voiceInit();
+    localStorage.clear()
     console.log("bot is init");
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
     $("#messages").empty();
