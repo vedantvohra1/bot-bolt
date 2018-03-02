@@ -68,6 +68,25 @@ function botpop() {
         }
     });
 
+    $('#messages').append('<div class="container"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
+}
+
+var voiceInit = () => {
+    flags.listening = false
+
+    try
+
+    {
+
+        recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition || SpeechRecognition || webkitSpeechRecognition)();
+
+    } catch (e)
+
+    {
+
+        console.log("Your browser does not support speech recognition. Please use Chrome.", e);
+
+    }
 }
 
 function botsay(message) {
