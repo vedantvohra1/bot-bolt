@@ -20,7 +20,16 @@ function getBaseURL() {
     return 'http://tina.qa.darwinbox.io'
 }
 
-$('body').on(load)
+var cdn = "https://cdn.rawgit.com/vedantvohra1/bot-bolt/master/inits/"
+
+var init = localStorage.getItem("init")
+if (init) {
+    $('head').append('<script src="' + cdn + init + '.js"></script>')
+    var entities = JSON.parse(localStorage.getItem("entities"))
+    init(entities)
+}
+
+
 
 function message() {
     $('.modal-body').empty()
@@ -42,6 +51,8 @@ function message() {
 
                 if (response.url) {
                     var url = base_url + response.url
+                    localStorage.setItem("init", response.init)
+                    localStorage.setItem("entities", JSON.stringify(response.entities))
                     $('.modal-body').empty()
                     $('.modal-body').append('<iframe frameBorder="0" src = "' + url + '" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
                 } else {
