@@ -24,7 +24,8 @@ function message() {
     var time = h + ':' + m;
     $('#messages').append('<div class="container darker"><img src="bot-bolt/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
     console.log(text);
-    $('#messages').append('<iframe src = "https://dbox.darwinbox.in/leaves" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+    $(".modal-body").empty();
+    $('.modal-body').append('<iframe  src = "https://dbox.darwinbox.in/leaves" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
 }
 
 
