@@ -73,6 +73,7 @@ function botpop() {
     $(".modal-body").empty()
     $('#reqblock').append('<input type="text" id="message">');
     $('#reqblock').append('<button id="callbot" type="button" class="btn btn-default" >Record</button>');
+    $('#reqblock').append('<button id="textsubmit" type="button" class="btn btn-default" >submit</button>');
     $("#callbot").click(function() {
         if (flags.listening == false) {
             trigger_speech_recognition()
