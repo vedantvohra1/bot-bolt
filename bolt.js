@@ -11,13 +11,8 @@ document.body.innerHTML += '<div class="w3-container"><button onclick="botpop()"
 
 //$('body').append('<div class="container"><h2>Modal Example</h2><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button><div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Modal Header</h4></div><div class="modal-body"><p>Some text in the modal.</p></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div></div>');
 
-var recognition;
-var output_class = "#message"
-var flags = {}
-var base_url = getBaseURL()
-
-function getBaseURL() {
-    return 'http://dbox.darwinbox.in'
+function removeframe(id) {
+    $("#" + id).remove();
 }
 
 function message() {
@@ -27,7 +22,9 @@ function message() {
         h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
         m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
     var time = h + ':' + m;
+    $('#messages').append('<div class="container darker"><img src="bot-bolt/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
     console.log(text);
+<<<<<<< HEAD
     if (text != "") {
         $('#messages').append('<div class="container darker"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
 
@@ -48,35 +45,29 @@ function message() {
             }
         });
     }
+=======
+    $(".modal-body").empty();
+    $('.modal-body').append('<iframe  src = "https://dbox.darwinbox.in/leaves" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+>>>>>>> d282afc86ffa3230bdf0c5582f02c9269fbd8428
 }
 
 
 function botpop() {
-    voiceInit();
     console.log("bot is init");
-    $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
-    $("#messages").empty();
-    botsay("Hello. I still wonder why you didn\'t get fired")
-    $("#reqblock").empty();
-    $('#reqblock').append('<input type="text" id="message">');
-    $('#reqblock').append('<button id="callbot" type="button" class="btn btn-default" >Record</button>');
-    $("#callbot").click(function() {
-        if (flags.listening == false) {
-            trigger_speech_recognition()
-        } else if (flags.listening == true) {
-            stop_speech_recognition()
-        }
-    });
-
-}
-
-function botsay(message) {
     var d = new Date(),
         h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
         m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
     var time = h + ':' + m;
     console.log(time);
+    $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
+    $("#messages").empty();
+    $('#messages').append('<div class="container"><img src="bot-bolt/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>Hello. I am Darwin<br/>How can I help you today?</p><span class="time-right">' + time + '</span></div>');
+    $("#reqblock").empty();
+    $('#reqblock').append('<input type="text" id="message">');
+    $('#reqblock').append('<button id="callbot" type="button" class="btn btn-default" >Record</button>');
+    $("#callbot").click(function() { message(); });
 
+<<<<<<< HEAD
     $('#messages').append('<div class="container"><img src="https://gitlab.com/nvk777/bot-bolt/raw/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
@@ -96,95 +87,9 @@ var voiceInit = () => {
         console.log("Your browser does not support speech recognition. Please use Chrome.", e);
 
     }
+=======
+>>>>>>> d282afc86ffa3230bdf0c5582f02c9269fbd8428
 }
 
-var getTextFromEvent = function(e)
 
-{
-
-    return event.results[0][0].transcript;
-
-};
-
-var trigger_speech_recognition = function()
-
-{
-
-
-    recognition.continuous = false;
-
-    recognition.interimResults = true;
-
-    recognition.lang = "en-US";
-
-    recognition.maxAlternatives = 1;
-
-    var t = $(output_class).val(); // existing text
-
-    recognition.onresult = function(event) {
-
-        var r = getTextFromEvent(event); // new word
-
-        $(output_class).val(t + " " + r) //reads existing content and add new identified word with a space
-
-    };
-
-    recognition.onstart = function() {
-
-        console.log("listening");
-        flags.listening = true
-        $('#callbot').html('Recording...')
-    }
-
-
-
-    recognition.onend = function() {
-
-        flags.listening = false
-        $('#callbot').html('Record')
-
-        console.log("onend")
-        if (flags.manual_intervention) {
-            message()
-            return;
-        }
-
-        trigger_speech_recognition();
-
-    }
-
-
-
-    recognition.onerror = function(event) {
-
-        if (event.error == 'no-speech') {
-
-            console.log('no-speech');
-
-            stop_speech_recognition();
-
-        };
-
-    }
-
-    recognition.start();
-
-
-    recognition.onaudioend = function(event) {
-        console.log("audioend");
-        flags.manual_intervention = true
-        stop_speech_recognition()
-    }
-
-};
-
-var stop_speech_recognition = function(manual = false) {
-
-    recognition.stop();
-    flags.listening = false
-    $('#callbot').html('Record')
-};
-
-
-
-console.log('working')
+console.log('working');
