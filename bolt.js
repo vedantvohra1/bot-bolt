@@ -69,7 +69,8 @@ function message() {
                     console.log("assiging init");
                     var init = localStorage.getItem("init");
                     console.log(init);
-                    var scriptTag = '<script type="text/javascript">$.getScript(' + cdn + init + '.js);</script>';
+                    var entities = localStorage.getItem("entities");
+                    var scriptTag = '<script type="text/javascript">$.getScript(' + cdn + init + '.js);init(' + entities + ')</script>';
                     $("#myframe").contents().find("head").append(scriptTag);
 
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
