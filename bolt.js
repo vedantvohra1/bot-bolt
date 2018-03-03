@@ -8,7 +8,7 @@ $('head').append('<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/j
 //$('body').append('<div class="w3-container"><h2>Circular Buttons</h2><button class="w3-button w3-xlarge w3-circle w3-black">+</button></div>');
 //document.body.innerHTML += '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">';
 document.body.innerHTML += '<div class="w3-container"><button onclick="botpop()" data-toggle="modal" data-target="#myModal" class="w3-button w3-xlarge w3-circle w3-black">+</button></div>';
-
+console.log(window.location.href);
 //$('body').append('<div class="container"><h2>Modal Example</h2><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button><div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Modal Header</h4></div><div class="modal-body"><p>Some text in the modal.</p></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div></div>');
 
 var recognition;
@@ -64,17 +64,19 @@ function message() {
                     localStorage.setItem("entities", JSON.stringify(response.entities));
                     console.log(response.entities);
                     $('.modal-body').empty();
-                    //
-                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '?q=apply_leave" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+                    //?q=apply_leave
+                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
                     var init = localStorage.getItem("init");
                     console.log(init);
                     var entities = localStorage.getItem("entities");
                     var jq = '<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>';
                     var scriptTag = '<script type="text/javascript" src="' + cdn + init + '.js#L11">console.log(" init is actually called");init(' + entities + '); </script>';
+                    var test = '<script>console.log(document.getElementsByTagName("head")[0].innerHTML);</script>';
+                    // $("#myframe").contents().find("head").append(test);
                     $("#myframe").contents().find("head").append(jq);
                     $("#myframe").contents().find("head").append(scriptTag);
-
+                    console.log($("#myframe").contents());
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
                 } else {
                     $('.modal-body').empty();
