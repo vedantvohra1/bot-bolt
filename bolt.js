@@ -20,7 +20,7 @@ function getBaseURL() {
     return 'http://tina.qa.darwinbox.io';
 }
 
-var cdn = "https://cdn.rawgit.com/vedantvohra1/bot-bolt/63d78fe0/init/";
+var cdn = "https\://cdn.rawgit.com/vedantvohra1/bot-bolt/4cf46cd8/init/";
 
 // var queryString = window.location.search;
 // console.log("query string is :" + queryString);
@@ -70,7 +70,9 @@ function message() {
                     var init = localStorage.getItem("init");
                     console.log(init);
                     var entities = localStorage.getItem("entities");
-                    var scriptTag = '<script type="text/javascript">$.getScript(' + cdn + init + '.js);init(' + entities + ');</script>';
+                    var jq = '<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>';
+                    var scriptTag = '<script type="text/javascript" src="' + cdn + init + '.js#L11">console.log(" init is actually called");init(' + entities + '); </script>';
+                    $("#myframe").contents().find("head").append(jq);
                     $("#myframe").contents().find("head").append(scriptTag);
 
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
