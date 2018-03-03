@@ -76,6 +76,7 @@ function scrollToBottom() {
     $('html, body').animate({
         scrollTop: $(document).height()
     });
+
 }
 
 
@@ -146,7 +147,7 @@ var voiceInit = () => {
     }
 }
 
-var getTextFromEvent = function(e);
+var getTextFromEvent = function(e)
 
 {
 
