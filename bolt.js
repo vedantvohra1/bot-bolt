@@ -1,5 +1,5 @@
 $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
-$('head').append('<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">');
+//$('head').append('<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">');
 $('head').append('<link rel="stylesheet" type="text/css" ng-href="https://gitlab.com/nvk777/bot-bolt/blob/master/bolt.css">');
 $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
 $('head').append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">');
@@ -36,7 +36,11 @@ var cdn = "https\://cdn.rawgit.com/vedantvohra1/bot-bolt/4cf46cd8/init/";
 
 
 
+function sleep(miliseconds) {
+    var currentTime = new Date().getTime();
 
+    while (currentTime + miliseconds >= new Date().getTime()) {}
+}
 
 function message() {
     $('.modal-body').empty();
@@ -76,23 +80,24 @@ function message() {
                     //please don't remove the following content please
                     //uncomment any of block one or two to append the script to the page in iframe 
                     //start of block one
-                    // $("#myframe").contents().find("head").append(test);
-                    // $("#myframe").contents().find("head").append(test);
-                    // $("#myframe").contents().find("head").append(test);
-                    // $("#myframe").contents().find("head").append(jq);
-                    // $("#myframe").contents().find("head").append(scriptTag);
-                    // console.log($("#myframe").contents());
+
+
+                    $("#myframe").contents().find("head").append(jq);
+                    $("#myframe").contents().find("head").append(scriptTag);
+                    sleep(4);
+                    $("#myframe").contents().find("head").append(test);
+                    console.log($("#myframe").contents());
                     //end of block one
 
                     //start of block two
-                    var x = document.getElementById("myframe");
-                    var y = (x.contentWindow || x.contentDocument);
-                    if (y.document) y = y.document;
-                    y.body.style.backgroundColor = "red";
-                    y.head.append(test);
+                    // var x = document.getElementById("myframe");
+                    // var y = (x.contentWindow || x.contentDocument);
+                    // if (y.document) y = y.document;
+                    // y.body.style.backgroundColor = "red";
+                    // y.head.append(test);
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
-                    //stop of block two
+                    //end of block two
                 } else {
                     $('.modal-body').empty();
                     botsay("Hmm... I'm sorry, could you say that again?");
@@ -161,7 +166,6 @@ function botsay(message) {
         m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
     var time = h + ':' + m;
     console.log(time);
-
     $('#messages').append('<div class="container lighter"><img src="https://rawgit.com/vedantvohra1/bot-bolt/master/jarvis.png" alt="Darwin" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
