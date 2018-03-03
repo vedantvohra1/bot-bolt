@@ -22,17 +22,19 @@ function getBaseURL() {
 
 var cdn = "https://cdn.rawgit.com/vedantvohra1/bot-bolt/master/init/";
 
-var queryString = window.location.search;
-console.log(queryString);
-if (queryString != "") {
-    var init = localStorage.getItem("init");
-    console.log(init);
-    if (init) {
-        $('head').append('<script src="' + cdn + init + '.js"></script>');
-        var entities = JSON.parse(localStorage.getItem("entities"));
-        init(entities);
-    }
-}
+// var queryString = window.location.search;
+// console.log("query string is :" + queryString);
+// if (queryString != "") {
+//     var init = localStorage.getItem("init");
+//     console.log("init value" + init);
+//     if (init) {
+//         $('head').append('<script src="' + cdn + init + '.js"></script>');
+//         var entities = JSON.parse(localStorage.getItem("entities"));
+//         init(entities);
+//     }
+// }
+
+
 
 
 
@@ -46,7 +48,7 @@ function message() {
     var time = h + ':' + m;
     console.log(text);
     if (text != "") {
-        $('#messages').append('<div class="container darker"><img src="https://rawgit.com/vedantvohra1/bot-bolt/master/tony.jpg" alt="Avatar" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
+        $('#messages').append('<div class="container darker"><img src="https://rawgit.com/vedantvohra1/bot-bolt/master/tony.jpg" alt="User" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
         $('.modal-body').html("Please wait...");
         $.ajax({
             type: "GET",
@@ -56,10 +58,21 @@ function message() {
 
                 if (response.url) {
                     var url = base_url + response.url;
+                    console.log(url);
                     localStorage.setItem("init", response.init);
+                    console.log(response.init);
                     localStorage.setItem("entities", JSON.stringify(response.entities));
+                    console.log(response.entities);
                     $('.modal-body').empty();
-                    $('.modal-body').append('<iframe frameBorder="0" src = "' + url + '?q=apply_leave" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+                    //
+                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '?q=apply_leave" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+                    console.log("assiging init");
+                    var init = localStorage.getItem("init");
+                    console.log(init);
+                    var scriptTag = '<script type="text/javascript">$.getScript(' + cdn + init + '.js);</script>';
+                    $("#myframe").contents().find("head").append(scriptTag);
+
+                    // y.head.append('<script src="' + cdn + init + '.js"></script>');
                 } else {
                     $('.modal-body').empty();
                     botsay("Hmm... I'm sorry, could you say that again?");
@@ -99,6 +112,9 @@ function botpop() {
             stop_speech_recognition();
         }
     });
+    $("#textsubmit").click(function() {
+        message();
+    });
 }
 
 var voiceInit = () => {
@@ -126,7 +142,7 @@ function botsay(message) {
     var time = h + ':' + m;
     console.log(time);
 
-    $('#messages').append('<div class="container lighter"><img src="https://rawgit.com/vedantvohra1/bot-bolt/master/jarvis.png" alt="Avatar" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
+    $('#messages').append('<div class="container lighter"><img src="https://rawgit.com/vedantvohra1/bot-bolt/master/jarvis.png" alt="Darwin" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
 var voiceInit = () => {
