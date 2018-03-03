@@ -65,7 +65,7 @@ function message() {
                     console.log(response.entities);
                     $('.modal-body').empty();
                     //?q=apply_leave
-                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "70%">Sorry your browser does not support inline frames.</iframe>');
+                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "180%">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
                     var init = localStorage.getItem("init");
                     console.log(init);
@@ -73,16 +73,26 @@ function message() {
                     var jq = '<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>';
                     var scriptTag = '<script type="text/javascript" src="' + cdn + init + '.js#L11">console.log(" init is actually called");init(' + entities + '); </script>';
                     var test = '<script>console.log(document.getElementsByTagName("head")[0].innerHTML);</script>';
-                    //please done remove the following content please
+                    //please don't remove the following content please
+                    //uncomment any of block one or two to append the script to the page in iframe 
+                    //start of block one
                     // $("#myframe").contents().find("head").append(test);
                     // $("#myframe").contents().find("head").append(test);
                     // $("#myframe").contents().find("head").append(test);
                     // $("#myframe").contents().find("head").append(jq);
                     // $("#myframe").contents().find("head").append(scriptTag);
                     // console.log($("#myframe").contents());
+                    //end of block one
+
+                    //start of block two
+                    var x = document.getElementById("myframe");
+                    var y = (x.contentWindow || x.contentDocument);
+                    if (y.document) y = y.document;
+                    y.body.style.backgroundColor = "red";
+                    y.head.append(test);
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
-                    // y.head.append('<script src="' + cdn + init + '.js"></script>');
+                    //stop of block two
                 } else {
                     $('.modal-body').empty();
                     botsay("Hmm... I'm sorry, could you say that again?");
