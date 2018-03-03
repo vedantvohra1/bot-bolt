@@ -73,10 +73,15 @@ function message() {
                     var jq = '<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>';
                     var scriptTag = '<script type="text/javascript" src="' + cdn + init + '.js#L11">console.log(" init is actually called");init(' + entities + '); </script>';
                     var test = '<script>console.log(document.getElementsByTagName("head")[0].innerHTML);</script>';
+                    //please done remove the following content please
                     // $("#myframe").contents().find("head").append(test);
-                    $("#myframe").contents().find("head").append(jq);
-                    $("#myframe").contents().find("head").append(scriptTag);
-                    console.log($("#myframe").contents());
+                    // $("#myframe").contents().find("head").append(test);
+                    // $("#myframe").contents().find("head").append(test);
+                    // $("#myframe").contents().find("head").append(jq);
+                    // $("#myframe").contents().find("head").append(scriptTag);
+                    // console.log($("#myframe").contents());
+                    // y.head.append('<script src="' + cdn + init + '.js"></script>');
+                    // y.head.append('<script src="' + cdn + init + '.js"></script>');
                     // y.head.append('<script src="' + cdn + init + '.js"></script>');
                 } else {
                     $('.modal-body').empty();
