@@ -69,14 +69,14 @@ function message() {
                     console.log(response.entities);
                     $('.modal-body').empty();
                     //?q=apply_leave
-                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "180%">Sorry your browser does not support inline frames.</iframe>');
+                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "900px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
                     var init = localStorage.getItem("init");
                     console.log(init);
                     var entities = localStorage.getItem("entities");
                     var jq = '<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>';
                     var scriptTag = '<script type="text/javascript" src="' + cdn + init + '.js#L11">console.log(" init is actually called");init(' + entities + '); </script>';
-                    var test = '<script>console.log(document.getElementsByTagName("head")[0].innerHTML);</script>';
+                    var test = '<script>console.log(document.getElementsByTagName("body").innerHTML);</script>';
                     //please don't remove the following content please
                     //uncomment any of block one or two to append the script to the page in iframe 
                     //start of block one
