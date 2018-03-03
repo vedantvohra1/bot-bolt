@@ -74,7 +74,7 @@ function message() {
 
 function scrollToBottom() {
     $('html, body').animate({
-        scrollTop: $(document).height();
+        scrollTop: $(document).height()
     });
 }
 
