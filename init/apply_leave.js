@@ -27,6 +27,8 @@
 //     }
 //   }
 // ] ;
+console.log("file has been rendered");
+
 function init(api_text) {
 
     //var res = JSON.parse(JSON.stringify(api_text)) ;
