@@ -30,6 +30,7 @@ if (queryString != "") {
     if (init) {
         $('head').append('<script src="' + cdn + init + '.js"></script>')
         var entities = JSON.parse(localStorage.getItem("entities"))
+        localStorage.clear()
         init(entities)
     }
 }
