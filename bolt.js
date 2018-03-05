@@ -19,7 +19,7 @@ var base_url = getBaseURL();
 function getBaseURL() {
     return 'http://tina.qa.darwinbox.io';
 }
-// dummy
+console.log("dummy")
 
 var cdn = "https\://cdn.rawgit.com/vedantvohra1/bot-bolt/4cf46cd8/init/";
 
