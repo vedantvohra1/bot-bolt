@@ -22,17 +22,17 @@ function getBaseURL() {
 
 var cdn = "https\://cdn.rawgit.com/vedantvohra1/bot-bolt/4cf46cd8/init/";
 
-// var queryString = window.location.search;
-// console.log("query string is :" + queryString);
-// if (queryString != "") {
-//     var init = localStorage.getItem("init");
-//     console.log("init value" + init);
-//     if (init) {
-//         $('head').append('<script src="' + cdn + init + '.js"></script>');
-//         var entities = JSON.parse(localStorage.getItem("entities"));
-//         init(entities);
-//     }
-// }
+var queryString = window.location.search;
+console.log("query string is :" + queryString);
+if (queryString != "") {
+    var init = localStorage.getItem("init");
+    console.log("init value" + init);
+    if (init) {
+        $('head').append('<script src="' + cdn + init + '.js"></script>');
+        var entities = JSON.parse(localStorage.getItem("entities"));
+        init(entities);
+    }
+}
 
 
 
@@ -69,7 +69,7 @@ function message() {
                     console.log(response.entities);
                     $('.modal-body').empty();
                     //?q=apply_leave
-                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "900px">Sorry your browser does not support inline frames.</iframe>');
+                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '?q=apply_leave" width = "100%" height = "900px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
                     var init = localStorage.getItem("init");
                     console.log(init);
