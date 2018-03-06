@@ -43,8 +43,8 @@ function init(api_text) {
 
     // to get leave_type from json
     var leave_type = 3;
-    if (res[0].entities.leave_type != undefined) {
-        leave_type = res[0].entities.leave_type[0].value == "sick" ? 2 : 3;
+    if (res.leave_type != undefined) {
+        leave_type = res.leave_type[0].value == "sick" ? 2 : 3;
     }
     var leave_reason = "This is sample reason. ";
 
@@ -52,21 +52,21 @@ function init(api_text) {
         to_date = null,
         from_date_given = false;
 
-    if (res[0].entities.datetime != undefined) {
+    if (res.datetime != undefined) {
         //there is date and time entity ;
         //we have two possibilities from - to given (or) value is given
-        if (res[0].entities.datetime[0].from != undefined) {
-            from_date = res[0].entities.datetime[0].from.value;
+        if (res.datetime[0].from != undefined) {
+            from_date = res.datetime[0].from.value;
             from_date = from_date.substring(0, 10);
             from_date_given = true;
         }
-        if (res[0].entities.datetime[0].to != undefined) {
-            to_date = res[0].entities.datetime[0].to.value;
+        if (res.datetime[0].to != undefined) {
+            to_date = res.datetime[0].to.value;
             to_date = to_date.substring(0, 10);
         }
         //
-        if (res[0].entities.datetime[0].value != undefined) {
-            from_date = res[0].entities.datetime[0].value;
+        if (res.datetime[0].value != undefined) {
+            from_date = res.datetime[0].value;
             from_date = from_date.substring(0, 10);
             from_date_given = true;
         }
@@ -85,11 +85,11 @@ function init(api_text) {
     var is_half_day = false,
         is_second_half_day = false;
 
-    if (res[0].entities.datetime != undefined) {
-        if (res[0].entities.datetime[0].from != undefined) {
-            if (res[0].entities.datetime[0].from.grain == "hour") {
+    if (res.datetime != undefined) {
+        if (res.datetime[0].from != undefined) {
+            if (res.datetime[0].from.grain == "hour") {
                 is_half_day = true;
-                time = res[0].entities.datetime[0].from.value;
+                time = res.datetime[0].from.value;
                 time = time.substring(11, 13);
                 if (time >= "12") {
                     is_second_half_day = true;
