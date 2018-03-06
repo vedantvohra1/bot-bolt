@@ -3,11 +3,22 @@ var imgs = {
     reply_bot: "https://cdn3.iconfinder.com/data/icons/customer-support-7/32/40_robot_bot_customer_help_support_automatic_reply-512.png",
     user_icon: "https://cdn3.iconfinder.com/data/icons/users/100/user_male_1-512.png"
 }
-
+var rec_flag = 1;
 var recognition;
 var output_class = "#message";
 var flags = {};
 var base_url = getBaseURL();
+
+function makeid(a) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < a; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
 
 function getBaseURL() {
     return "https://sahit.darwinbox.in/";
@@ -32,7 +43,9 @@ var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
-        $('body').append('<script src="' + scripts + localStorage.getItem('init') + '.js">console.log("init called"); init(localStorage.getItem("entities"));</script>');
+        $('body').append('<script src="' + scripts + localStorage.getItem('init') + '.js"></script>');
+
+        init(JSON.parse(localStorage.getItem('entities')));
     } else {
         setUp();
     }
@@ -111,7 +124,10 @@ function message() {
                 } else {
                     $('.modal-body').empty();
                     botsay("Hmm... I'm sorry, could you say that again?");
-                    trigger_speech_recognition();
+                    if (rec_flag == 2) {
+                        trigger_speech_recognition();
+                    }
+
                 }
 
                 scrollToBottom();
@@ -129,6 +145,7 @@ function scrollToBottom() {
 
 function doit_onkeypress(event) {
     if (event.keyCode == 13 || event.which == 13) {
+        rec_flag = 1;
         message();
     }
 }
@@ -151,9 +168,7 @@ function botpop() {
             stop_speech_recognition();
         }
     });
-    $("#textsubmit").click(function() {
-        message();
-    });
+
 }
 
 var voiceInit = () => {
@@ -210,6 +225,7 @@ var trigger_speech_recognition = function() {
         $('#callbot').html('Record');
         console.log("onend")
         if (flags.manual_intervention) {
+            rec_flag = 2;
             message();
             return;
         }
