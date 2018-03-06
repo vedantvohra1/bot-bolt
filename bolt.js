@@ -1,6 +1,6 @@
 $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
 //$('head').append('<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">');
-$('head').append('<link rel="stylesheet" type="text/css" ng-href="https://gitlab.com/nvk777/bot-bolt/blob/master/bolt.css">');
+$('head').append('<link rel="stylesheet" type="text/css" ng-href="https\://gitcdn.xyz/repo/vedantvohra1/bot-bolt/master/bolt.css">');
 $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
 $('head').append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">');
 $('head').append('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>');
@@ -21,7 +21,7 @@ function getBaseURL() {
 }
 console.log("dummy")
 
-var cdn = "https\://cdn.rawgit.com/vedantvohra1/bot-bolt/4cf46cd8/init/";
+var cdn = "https\://gitcdn.xyz/repo/vedantvohra1/bot-bolt/master/init/";
 
 var queryString = window.location.search;
 console.log("query string is :" + queryString);
