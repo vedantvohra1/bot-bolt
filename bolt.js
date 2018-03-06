@@ -32,7 +32,7 @@ var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
-        $('body').append('<script src="' + scripts + localStorage.getItem('init') + '.js"></script>');
+        $('body').append('<script async=false defer=false src="' + scripts + localStorage.getItem('init') + '.js"></script>');
         $('body').append('<script>console.log("init called"); init(localStorage.getItem("entities"));</script>')
     } else {
         setUp();
