@@ -9,6 +9,17 @@ var output_class = "#message";
 var flags = {};
 var base_url = getBaseURL();
 
+function makeid(a) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < a; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
+
 function getBaseURL() {
     return "https://sahit.darwinbox.in/";
     // return window.location.origin;
