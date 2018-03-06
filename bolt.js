@@ -25,7 +25,8 @@ var flags = {};
 var base_url = getBaseURL();
 
 function getBaseURL() {
-    return window.location.origin;
+    return "http://tina.qa.darwinbox.io/";
+    // return window.location.origin;
 }
 
 var scripts = "/js/darwin/init_scripts/";
