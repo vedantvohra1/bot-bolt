@@ -40,21 +40,6 @@ var executeInit = function() {
 }
 executeInit();
 
-
-// var queryString = window.location.search;
-// console.log("query string is :" + queryString);
-// if (queryString != "") {
-//     var init = localStorage.getItem("init");
-//     console.log("init value" + init);
-//     if (init) {
-//         $('head').append('<script src="' + cdn + init + '.js"></script>');
-//         var entities = JSON.parse(localStorage.getItem("entities"));
-//         init(entities);
-//     }
-// }
-
-
-
 function sleep(miliseconds) {
     var currentTime = new Date().getTime();
 
