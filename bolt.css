@@ -22,7 +22,7 @@
 
 /* Modal Content/Box */
 
-.modal-content {
+b .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     /* 15% from the top and centered */
@@ -482,7 +482,8 @@ a {
 }
 
 .w3-btn:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
 }
 
 .w3-btn,
