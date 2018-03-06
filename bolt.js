@@ -32,6 +32,8 @@ var executeInit = function() {
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
         $('body').append('<script src="' + scripts + localStorage.getItem('init') + '.js"></script>');
+
+        init(JSON.parse(localStorage.getItem('entities')))
     } else {
         setUp();
     }
