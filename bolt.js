@@ -13,7 +13,7 @@ function getBaseURL() {
     // return window.location.origin;
 }
 
-var scripts = "/js/darwin/init_scripts/";
+var scripts = "https://gitcdn.xyz/repo/vedantvohra1/bot-bolt/master/init/";
 
 var setUp = function() {
     $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
