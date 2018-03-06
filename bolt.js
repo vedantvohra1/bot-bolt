@@ -32,8 +32,10 @@ var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
-        $('body').append('<script async=false defer=false src="' + scripts + localStorage.getItem('init') + '.js"></script>');
-        $('body').append('<script async=false defer=false>console.log("init called"); init(localStorage.getItem("entities"));</script>')
+        $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
+            console.log("init called");
+            init(localStorage.getItem("entities"));
+        });
     } else {
         setUp();
     }
