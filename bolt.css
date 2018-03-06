@@ -35,6 +35,12 @@
 
 /* The Close Button */
 
+.modal-body {
+    /* 100% = dialog height, 120px = header + footer */
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
 .close {
     color: #aaa;
     float: right;
