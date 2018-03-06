@@ -33,9 +33,10 @@ var executeInit = function() {
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
         $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
+            console.log(localStorage.getItem("entities"))
             console.log("init called");
+
             init(localStorage.getItem("entities"));
-            localStorage.clear()
         });
     } else {
         setUp();
