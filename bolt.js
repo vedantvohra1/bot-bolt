@@ -1,6 +1,7 @@
 var imgs = {
     float_icon: "https://cdn3.iconfinder.com/data/icons/customer-support-7/32/40_robot_bot_customer_help_support_automatic_reply-512.png",
     reply_bot: "https://cdn3.iconfinder.com/data/icons/customer-support-7/32/40_robot_bot_customer_help_support_automatic_reply-512.png",
+    user_icon: "https://cdn3.iconfinder.com/data/icons/users/100/user_male_1-512.png"
 }
 
 var recognition;
@@ -71,7 +72,7 @@ function message() {
     var time = h + ':' + m;
     console.log(text);
     if (text != "") {
-        $('#messages').append('<div class="container darker"><img src="' + imgs.float_icon + '" alt="User" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
+        $('#messages').append('<div class="container darker"><img src="' + imgs.user_icon + '" alt="User" style="width:5%;height:5%;" class="right" style="width:100%;"><p>' + text + '</p><span class="time-left">' + time + '</span></div>');
         $('.modal-body').html("Please wait...");
         $.ajax({
             type: "GET",
@@ -154,7 +155,7 @@ function botsay(message) {
         m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
     var time = h + ':' + m;
     console.log(time);
-    $('#messages').append('<div class="container lighter"><img src="' + imgs.float_icon + '" alt="Darwin" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
+    $('#messages').append('<div class="container lighter"><img src="' + imgs.reply_bot + '" alt="Darwin" style="width:5%;height:5%;"><p>' + message + '</p><span class="time-right">' + time + '</span></div>');
 }
 
 var voiceInit = () => {
