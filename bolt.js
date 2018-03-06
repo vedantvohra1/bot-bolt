@@ -99,7 +99,7 @@ function message() {
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/log",
-                                data: { msg_id: response.msg_id, tenant_id = resp.tenant_id },
+                                data: { msg_id: response.msg_id, tenant_id: resp.tenant_id },
                                 crossDomain: true, //set as a cross domain requests 
                                 withCredentials: false,
                                 success: function(response) {
