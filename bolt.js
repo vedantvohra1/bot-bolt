@@ -33,7 +33,7 @@ var executeInit = function() {
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
         $('body').append('<script async=false defer=false src="' + scripts + localStorage.getItem('init') + '.js"></script>');
-        $('body').append('<script>console.log("init called"); init(localStorage.getItem("entities"));</script>')
+        $('body').append('<script async=false defer=false>console.log("init called"); init(localStorage.getItem("entities"));</script>')
     } else {
         setUp();
     }
