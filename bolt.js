@@ -10,7 +10,7 @@ var flags = {};
 var base_url = getBaseURL();
 
 function getBaseURL() {
-    return "http://tina.qa.darwinbox.io/";
+    return "https://sahit.darwinbox.in/";
     // return window.location.origin;
 }
 
@@ -92,6 +92,24 @@ function message() {
                     $('.modal-body').empty();
                     $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
+
+                    var resp = JSON.parse(localStorage.getItem("resp"))
+                    if (resp) {
+                        if (resp.fail) {
+                            $.ajax({
+                                type: "POST",
+                                url: "http://localhost:3000/log",
+                                data: { msg_id: response.msg_id, tenant_id = resp.tenant_id },
+                                crossDomain: true, //set as a cross domain requests 
+                                withCredentials: false,
+                                success: function(response) {
+                                    console.log(response)
+                                }
+                            })
+                        }
+                    } else {
+                        console.log('no response')
+                    }
                 } else {
                     $('.modal-body').empty();
                     botsay("Hmm... I'm sorry, could you say that again?");
