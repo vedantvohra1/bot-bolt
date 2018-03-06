@@ -74,7 +74,7 @@ function message() {
                     var url = `${base_url}${response.url}?bot=true`;
                     console.log(url);
                     localStorage.setItem("init", response.init);
-                    console.log(response.init);
+                    console.log(response.init, localStorage.getItem("init"));
                     localStorage.setItem("entities", JSON.stringify(response.entities));
                     console.log(response.entities);
                     $('.modal-body').empty();
