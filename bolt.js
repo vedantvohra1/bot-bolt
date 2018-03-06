@@ -35,6 +35,7 @@ var executeInit = function() {
         $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
             console.log("init called");
             init(localStorage.getItem("entities"));
+            localStorage.clear()
         });
     } else {
         setUp();
@@ -126,7 +127,7 @@ function doit_onkeypress(event) {
 
 function botpop() {
     voiceInit();
-    //localStorage.clear();
+    localStorage.clear();
     console.log("bot is init");
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
     $("#messages").empty();
