@@ -481,8 +481,7 @@ a {
     white-space: nowrap
 }
 
-.w3-btn:hover, 
-.w3-button:hover {
+.w3-btn:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
 }
@@ -1526,6 +1525,7 @@ a {
 .w3-button:hover {
     color: #000!important;
     background-color: #ccc!important
+    cursor: pointer;
 }
 
 .w3-transparent,
