@@ -37,7 +37,8 @@
 
 .modal-body {
     /* 100% = dialog height, 120px = header + footer */
-    overflow-y: scroll;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
 }
 
 .close {
