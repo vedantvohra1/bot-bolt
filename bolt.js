@@ -111,7 +111,9 @@ function message() {
                 } else {
                     $('.modal-body').empty();
                     botsay("Hmm... I'm sorry, could you say that again?");
-                    trigger_speech_recognition();
+
+                    if (flags.rec_flag == 2)
+                        trigger_speech_recognition();
                 }
 
                 scrollToBottom();
@@ -129,6 +131,7 @@ function scrollToBottom() {
 
 function doit_onkeypress(event) {
     if (event.keyCode == 13 || event.which == 13) {
+        flags.rec_flag = 1;
         message();
     }
 }
@@ -210,6 +213,7 @@ var trigger_speech_recognition = function() {
         $('#callbot').html('Record');
         console.log("onend")
         if (flags.manual_intervention) {
+            flags.rec_flag = 2;
             message();
             return;
         }
