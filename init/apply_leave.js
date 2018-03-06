@@ -67,8 +67,10 @@ function init(api_text) {
         //
         if (res.datetime[0].value != undefined) {
             from_date = res.datetime[0].value;
+            console.log(from_date)
             from_date = from_date.substring(0, 10);
             from_date_given = true;
+            to_date = from_date.substring(0, 10);
         }
     }
     var today = new Date();
