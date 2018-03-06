@@ -32,6 +32,7 @@ var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
+        console.log(localStorage.getItem('init'))
         $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
             console.log(localStorage.getItem("entities"))
             console.log("init called");
@@ -74,7 +75,7 @@ function message() {
                     var url = `${base_url}${response.url}?bot=true`;
                     console.log(url);
                     localStorage.setItem("init", response.init);
-                    console.log(response.init, localStorage.getItem("init"));
+                    console.log(response.init);
                     localStorage.setItem("entities", JSON.stringify(response.entities));
                     console.log(response.entities);
                     $('.modal-body').empty();
