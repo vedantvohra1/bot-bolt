@@ -43,6 +43,7 @@ function init(api_text) {
         // 4 ----> Loss of Pay
 
     // to get leave_type from json
+    //res.text
     var leave_type = 3;
     if (res.leave_type != undefined) {
         leave_type = res.leave_type[0].value == "sick" ? 2 : 3;
@@ -51,7 +52,8 @@ function init(api_text) {
 
     var from_date = null,
         to_date = null,
-        from_date_given = false;
+        from_date_given = false,
+        to_date_given = false;
 
     if (res.datetime != undefined) {
         //there is date and time entity ;
@@ -64,6 +66,7 @@ function init(api_text) {
         if (res.datetime[0].to != undefined) {
             to_date = res.datetime[0].to.value;
             to_date = to_date.substring(0, 10);
+            to_date_given = true;
         }
         //
         if (res.datetime[0].value != undefined) {
@@ -73,6 +76,10 @@ function init(api_text) {
             from_date_given = true;
             to_date = from_date.substring(0, 10);
         }
+
+    } else {
+        from_date_given = false;
+        to_date_given = false;
     }
     var today = new Date();
     Date.prototype.yyyymmdd = function() {
@@ -83,14 +90,24 @@ function init(api_text) {
     };
 
     from_date = from_date_given ? from_date : today.yyyymmdd();
-
+    to_date = to_date_given ? to_date : today.yyyymmdd();
 
     var is_half_day = false,
         is_second_half_day = false;
 
     if (res.datetime != undefined) {
         if (res.datetime[0].from != undefined) {
+            var half_check = new RegExp("half");
+
             if (res.datetime[0].from.grain == "hour") {
+                is_half_day = true;
+                time = res.datetime[0].from.value;
+                time = time.substring(11, 13);
+                if (time >= "12") {
+                    is_second_half_day = true;
+                }
+            }
+            if (half_check.test(res.text)) {
                 is_half_day = true;
                 time = res.datetime[0].from.value;
                 time = time.substring(11, 13);
