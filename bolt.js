@@ -32,14 +32,6 @@ var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
-        // console.log(localStorage.getItem('init'))
-        // $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
-        //     console.log(localStorage.getItem("entities"))
-        //     console.log("init called");
-
-        //     init(localStorage.getItem("entities"));
-        // });
-
         window.addEventListener('message', function(event) {
             if (event.origin !== 'http://localhost:8000' && event.origin !== 'https://sahit.darwinbox.in') {
                 console.log('invalid origin');
@@ -102,10 +94,6 @@ function message() {
                 if (response.url) {
                     var url = `${base_url}${response.url}?bot=true`;
                     console.log(url);
-                    /*  localStorage.setItem("init", response.init);
-                     console.log(response.init);
-                     localStorage.setItem("entities", JSON.stringify(response.entities));
-                     console.log(response.entities); */
 
                     $('.modal-body').empty();
                     $('.modal-body').append('<button type="button"  id="mapiframe" >^</button><iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
