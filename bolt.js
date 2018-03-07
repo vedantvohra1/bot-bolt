@@ -45,7 +45,15 @@ var executeInit = function() {
                 console.log('invalid origin');
                 return;
             }
-            console.log('message received:  ' + event.data, event);
+            console.log('message received:  ' + event.data);
+
+            var data = JSON.parse(event.data)
+
+            $.getScript(scripts + data.init + '.js', function() {
+                console.log("init called");
+
+                init(JSON.stringify(data.entities));
+            });
             // event.source.postMessage('holla back youngin!', event.origin);
         }, false);
 
