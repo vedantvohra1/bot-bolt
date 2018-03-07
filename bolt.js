@@ -94,12 +94,6 @@ function message() {
                      console.log(response.init);
                      localStorage.setItem("entities", JSON.stringify(response.entities));
                      console.log(response.entities); */
-                    var message = {
-                        init: response.init,
-                        entities: response.entities
-                    }
-                    console.log('sending message')
-                    document.getElementById('myframe').contentWindow.postMessage(message, 'https://sahit.darwinbox.in')
 
                     $('.modal-body').empty();
                     $('.modal-body').append('<button type="button"  id="mapiframe" >^</button><iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
@@ -107,6 +101,12 @@ function message() {
                     document.getElementById('myframe').style.display = 'block';
                     document.getElementById('mapiframe').onclick = function() { Editiframe(); };
 
+                    var message = {
+                        init: response.init,
+                        entities: response.entities
+                    }
+                    console.log('sending message')
+                    document.getElementById('myframe').contentWindow.postMessage(message, 'https://sahit.darwinbox.in')
 
                     var resp = JSON.parse(localStorage.getItem("resp"))
                     if (resp) {
