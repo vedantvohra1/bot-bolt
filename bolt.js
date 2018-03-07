@@ -60,6 +60,16 @@ function sleep(miliseconds) {
     while (currentTime + miliseconds >= new Date().getTime()) {}
 }
 
+function Editiframe() {
+    if (document.getElementById('myframe').style.display == 'block') {
+        document.getElementById('myframe').style.display = 'none';
+        document.getElementById('mapiframe').innerText = '>>';
+    } else {
+        document.getElementById('myframe').style.display = 'block';
+        document.getElementById('mapiframe').innerText = '^';
+    }
+}
+
 function message() {
     $('.modal-body').empty();
     var text = $('#message').val();
@@ -95,8 +105,11 @@ function message() {
                         $('#myFrame').contentWindow
                     );
                     $('.modal-body').empty();
-                    $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
+                    $('.modal-body').append('<button type="button"  id="mapiframe" >^</button><iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
+                    document.getElementById('myframe').style.display = 'block';
+                    document.getElementById('mapiframe').onclick = function() { Editiframe(); };
+
 
                     var resp = JSON.parse(localStorage.getItem("resp"))
                     if (resp) {
