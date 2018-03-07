@@ -105,13 +105,13 @@ function message() {
                     document.getElementById('myframe').style.display = 'block';
                     document.getElementById('mapiframe').onclick = function() { Editiframe(); };
 
-                    $('#myframe').load(function() {
+                    $('#myframe').on('load', function() {
                         var message = {
                             init: response.init,
                             entities: response.entities
                         }
                         console.log('sending message')
-                        document.getElementById('myframe').contentWindow.postMessage(message, 'https://sahit.darwinbox.in' || 'http://localhost:8000')
+                        document.getElementById('myframe').contentWindow.postMessage(JSON.stringify(message), 'https://sahit.darwinbox.in' || 'http://localhost:8000')
                     })
 
                     var resp = JSON.parse(localStorage.getItem("resp"))
