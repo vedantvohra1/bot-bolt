@@ -110,7 +110,7 @@ function message() {
                         entities: response.entities
                     }
                     console.log('sending message')
-                    document.getElementById('myframe').contentWindow.postMessage(message, 'https://sahit.darwinbox.in')
+                    document.getElementById('myframe').contentWindow.postMessage(message, 'https://sahit.darwinbox.in' || 'http://localhost:8000')
 
                     var resp = JSON.parse(localStorage.getItem("resp"))
                     if (resp) {
