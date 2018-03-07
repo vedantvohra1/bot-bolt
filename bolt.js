@@ -92,7 +92,7 @@ function message() {
                             entities: response.entities
                         },
                         'https://sahit.darwinbox.in',
-                        child
+                        $('#myFrame').contentWindow
                     );
                     $('.modal-body').empty();
                     $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
