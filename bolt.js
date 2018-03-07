@@ -99,7 +99,7 @@ function message() {
                         entities: response.entities
                     }
                     console.log('sending message')
-                    $('#myFrame').contentWindow.postMessage(message, 'https://sahit.darwinbox.in')
+                    document.getElementById('myframe').contentWindow.postMessage(message, 'https://sahit.darwinbox.in')
 
                     $('.modal-body').empty();
                     $('.modal-body').append('<button type="button"  id="mapiframe" >^</button><iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
