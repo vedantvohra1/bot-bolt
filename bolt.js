@@ -14,8 +14,6 @@ function getBaseURL() {
     // return window.location.origin;
 }
 
-$('head').append('<script src = "https://rawgit.com/JediRhymeTrix/jquery-postmessage/master/jquery.ba-postmessage.min.js"></script>')
-
 var scripts = "https://rawgit.com/vedantvohra1/bot-bolt/master/init/";
 
 var setUp = function() {
@@ -42,12 +40,11 @@ var executeInit = function() {
         //     init(localStorage.getItem("entities"));
         // });
 
-        $.receiveMessage(
-            function(e) {
-                alert(e.data);
-            },
-            'http://localhost:8000/preview.html'
-        );
+        $(window).on('message', function(event) {
+            if (event.origin !== 'http://localhost:8000' && event.origin !== 'https://sahit.darwinbox.in') return;
+
+            console.log('message recieved: ', event.data)
+        })
     } else {
         setUp();
     }
@@ -97,13 +94,13 @@ function message() {
                      console.log(response.init);
                      localStorage.setItem("entities", JSON.stringify(response.entities));
                      console.log(response.entities); */
-                    $.postMessage({
-                            init: response.init,
-                            entities: response.entities
-                        },
-                        'https://sahit.darwinbox.in',
-                        $('#myFrame').contentWindow
-                    );
+                    var message = {
+                        init: response.init,
+                        entities: response.entities
+                    }
+                    console.log('sending message')
+                    $('#myFrame').contentWindow.postMessage(message, 'https://sahit.darwinbox.in')
+
                     $('.modal-body').empty();
                     $('.modal-body').append('<button type="button"  id="mapiframe" >^</button><iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
