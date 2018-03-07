@@ -14,6 +14,8 @@ function getBaseURL() {
     // return window.location.origin;
 }
 
+$('head').append('<script src = "https://rawgit.com/cowboy/jquery-postmessage/master/jquery.ba-postmessage.min.js"></script>')
+
 var scripts = "https://rawgit.com/vedantvohra1/bot-bolt/master/init/";
 
 var setUp = function() {
@@ -32,13 +34,20 @@ var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
-        console.log(localStorage.getItem('init'))
-        $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
-            console.log(localStorage.getItem("entities"))
-            console.log("init called");
+        // console.log(localStorage.getItem('init'))
+        // $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
+        //     console.log(localStorage.getItem("entities"))
+        //     console.log("init called");
 
-            init(localStorage.getItem("entities"));
-        });
+        //     init(localStorage.getItem("entities"));
+        // });
+
+        $.receiveMessage(
+            function(e) {
+                alert(e.data);
+            },
+            'http://localhost:8000/preview.html'
+        );
     } else {
         setUp();
     }
@@ -74,10 +83,17 @@ function message() {
                 if (response.url) {
                     var url = `${base_url}${response.url}?bot=true`;
                     console.log(url);
-                    localStorage.setItem("init", response.init);
-                    console.log(response.init);
-                    localStorage.setItem("entities", JSON.stringify(response.entities));
-                    console.log(response.entities);
+                    /*  localStorage.setItem("init", response.init);
+                     console.log(response.init);
+                     localStorage.setItem("entities", JSON.stringify(response.entities));
+                     console.log(response.entities); */
+                    $.postMessage({
+                            init: response.init,
+                            entities: response.entities
+                        },
+                        'https://sahit.darwinbox.in',
+                        child
+                    );
                     $('.modal-body').empty();
                     $('.modal-body').append('<iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
