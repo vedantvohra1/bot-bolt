@@ -35,11 +35,12 @@ function init(api_text) {
     // comment below line and uncomment above line and api_text for testing in browser	
     var res = JSON.parse(api_text);
     console.log("init triggred");
-    // leave_type
-    // 1 ----> Saturday Off
-    // 2 ----> Sick Leave
-    // 3 ----> Casual Leave
-    // 4 ----> Loss of Pay
+    console.log(res)
+        // leave_type
+        // 1 ----> Saturday Off
+        // 2 ----> Sick Leave
+        // 3 ----> Casual Leave
+        // 4 ----> Loss of Pay
 
     // to get leave_type from json
     var leave_type = 3;
@@ -67,8 +68,10 @@ function init(api_text) {
         //
         if (res.datetime[0].value != undefined) {
             from_date = res.datetime[0].value;
+            console.log(from_date)
             from_date = from_date.substring(0, 10);
             from_date_given = true;
+            to_date = from_date.substring(0, 10);
         }
     }
     var today = new Date();

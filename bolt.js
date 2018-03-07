@@ -14,6 +14,8 @@ function getBaseURL() {
     // return window.location.origin;
 }
 
+$('head').append('<script src = "https://rawgit.com/cowboy/jquery-postmessage/master/jquery.ba-postmessage.min.js"></script>')
+
 var scripts = "https://rawgit.com/vedantvohra1/bot-bolt/master/init/";
 
 var setUp = function() {
@@ -32,10 +34,20 @@ var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
         //execute init scripts
-        $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
-            console.log("init called");
-            init(localStorage.getItem("entities"));
-        });
+        // console.log(localStorage.getItem('init'))
+        // $.getScript(scripts + localStorage.getItem('init') + '.js', function() {
+        //     console.log(localStorage.getItem("entities"))
+        //     console.log("init called");
+
+        //     init(localStorage.getItem("entities"));
+        // });
+
+        $.receiveMessage(
+            function(e) {
+                alert(e.data);
+            },
+            'http://localhost:8000/preview.html'
+        );
     } else {
         setUp();
     }
@@ -81,10 +93,17 @@ function message() {
                 if (response.url) {
                     var url = `${base_url}${response.url}?bot=true`;
                     console.log(url);
-                    localStorage.setItem("init", response.init);
-                    console.log(response.init);
-                    localStorage.setItem("entities", JSON.stringify(response.entities));
-                    console.log(response.entities);
+                    /*  localStorage.setItem("init", response.init);
+                     console.log(response.init);
+                     localStorage.setItem("entities", JSON.stringify(response.entities));
+                     console.log(response.entities); */
+                    $.postMessage({
+                            init: response.init,
+                            entities: response.entities
+                        },
+                        'https://sahit.darwinbox.in',
+                        child
+                    );
                     $('.modal-body').empty();
                     $('.modal-body').append('<button type="button"  id="mapiframe" >^</button><iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
@@ -139,7 +158,7 @@ function doit_onkeypress(event) {
 
 function botpop() {
     voiceInit();
-    //localStorage.clear();
+    // localStorage.clear();
     console.log("bot is init");
     $('body').append('<div class="modal fade" id="myModal" role="dialog"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><div id="messages"></div></div><div class="modal-body"></div><div id="reqblock" class="modal-footer"></div></div></div></div></div>');
     $("#messages").empty();
