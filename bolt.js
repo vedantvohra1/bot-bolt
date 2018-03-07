@@ -41,7 +41,10 @@ var executeInit = function() {
         // });
 
         window.addEventListener('message', function(event) {
-            if (event.origin !== 'http://localhost:8000' && event.origin !== 'https://sahit.darwinbox.in') return;
+            if (event.origin !== 'http://localhost:8000' && event.origin !== 'https://sahit.darwinbox.in') {
+                console.log('invalid origin');
+                return;
+            }
             console.log('message received:  ' + event.data, event);
             // event.source.postMessage('holla back youngin!', event.origin);
         }, false);
