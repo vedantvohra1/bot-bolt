@@ -95,6 +95,8 @@ function message() {
                     var url = `${base_url}${response.url}?bot=true`;
                     console.log(url);
 
+                    response.entities.text = response.text
+
                     $('.modal-body').empty();
                     $('.modal-body').append('<button type="button"  id="mapiframe" >^</button><iframe id="myframe" frameBorder="0" src = "' + url + '" width = "100%" height = "400px">Sorry your browser does not support inline frames.</iframe>');
                     console.log("assiging init");
