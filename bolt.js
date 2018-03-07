@@ -31,6 +31,8 @@ var setUp = function() {
 var executeInit = function() {
     // opened in iframe
     if (/[?&]bot=/.test(location.search)) {
+        console.log("in iframe")
+
         //execute init scripts
         window.addEventListener('message', function(event) {
             if (event.origin !== 'http://localhost:8000' && event.origin !== 'https://sahit.darwinbox.in') {
