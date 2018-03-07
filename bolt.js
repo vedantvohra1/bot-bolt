@@ -14,7 +14,7 @@ function getBaseURL() {
     // return window.location.origin;
 }
 
-$('head').append('<script src = "https://rawgit.com/thomassturm/ender-postmessage/master/ender-postmessage.min.js"></script>')
+$('head').append('<script src = "https://rawgit.com/JediRhymeTrix/jquery-postmessage/master/jquery.ba-postmessage.min.js"></script>')
 
 var scripts = "https://rawgit.com/vedantvohra1/bot-bolt/master/init/";
 
